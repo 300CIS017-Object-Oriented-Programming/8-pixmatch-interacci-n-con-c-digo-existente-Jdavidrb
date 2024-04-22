@@ -18,7 +18,7 @@ vpth = "./"
 
 # Definimos el estilo de los emojis en el juego y otros elementos de la interfaz
 sbe = """
-        <span style='font-size: 10px;
+        <span style='font-size: 140px;
                   border-radius: 7px;
                   text-align: center;
                   display: inline;
@@ -106,15 +106,15 @@ def Leaderboard(what_to_do):
                 leaderboard_dict_lngth = len(leaderboard)
 
                 # Añade los detalles del juego del jugador al diccionario de la tabla de líderes
-                leaderboard[str(leaderboard_dict_lngth + 1)] = {'NameCountry': mystate.GameDetails[3],
-                                                                'HighestScore': mystate.myscore}
+                leaderboard[mystate.GameDetails[3]] = {'NameCountry': mystate.GameDetails[3],
+                                                       'HighestScore': mystate.myscore}
                 # Ordena el diccionario de la tabla de líderes en orden descendente por la puntuación más alta
                 leaderboard = dict(sorted(leaderboard.items(), key=lambda item: item[1]['HighestScore'], reverse=True))
 
-                # Si la longitud de la tabla de líderes es mayor que 3
-                if len(leaderboard) > 3:
-                    # Elimina los últimos elementos de la tabla de líderes hasta que su longitud sea 3
-                    for i in range(len(leaderboard) - 3): leaderboard.popitem()
+                # Si la longitud de la tabla de líderes es mayor que 4 (Modificacion no 1)
+                if len(leaderboard) > 4:
+                    # Elimina los últimos elementos de la tabla de líderes hasta que su longitud sea 4 (Modificacion no1)
+                    for i in range(len(leaderboard) - 4): leaderboard.popitem()
 
                 # Escribe el diccionario de la tabla de líderes en el archivo 'leaderboard.json'
                 json.dump(leaderboard, open(vpth + 'leaderboard.json', 'w'))
@@ -140,7 +140,7 @@ def Leaderboard(what_to_do):
                     if leaderboard[vkey]['NameCountry'] != '':
                         # Incrementa el contador de rango
                         rknt += 1
-                        # Si el rango es 1, muestra el primer ganador
+                        # Mostrar los ganadores segun el rango
                         if rknt == 1:
                             sc0.write('🏆 Ganadores pasados:')
                             sc1.write(
@@ -153,6 +153,10 @@ def Leaderboard(what_to_do):
                         elif rknt == 3:
                             sc3.write(
                                 f"🥈 | {leaderboard[vkey]['NameCountry']}: :red[{leaderboard[vkey]['HighestScore']}]")
+
+                        elif rknt == 4: # (modificacion no2)
+                            sc3.write(
+                                f"🥉 | {leaderboard[vkey]['NameCountry']}: :red[{leaderboard[vkey]['HighestScore']}]")
 
 
 # Esta función configura la página inicial del juego
