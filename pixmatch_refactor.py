@@ -67,7 +67,8 @@ if "myscore" not in mystate: mystate.myscore = 0
 if "plyrbtns" not in mystate: mystate.plyrbtns = {}
 if "sidebar_emoji" not in mystate: mystate.sidebar_emoji = ''
 if "emoji_bank" not in mystate: mystate.emoji_bank = []
-if "GameDetails" not in mystate: mystate.GameDetails = ['Medium', 6, 7,'']  # difficulty level, sec interval for autogen, total_cells_per_row_or_col, player name
+if "GameDetails" not in mystate: mystate.GameDetails = ['Medium', 6, 7,'']
+if "failures" not in mystate: mystate.failures = 0 # (Modificacion no 3)
 
 
 # Esta función ajusta el espacio desde la parte superior de la página o la barra lateral
@@ -245,6 +246,9 @@ def PressedCheck(vcell):
             mystate.plyrbtns[vcell]['isTrueFalse'] = False
             # Disminuye la puntuación del jugador
             mystate.myscore -= 1
+            # (Modificacion no3)
+            mystate.failures += 1  # Incrementamos el contador de fallos
+
 
 
 # Esta función restablece el tablero de juego
@@ -297,6 +301,7 @@ def PreNewGame():
     # Reinicia las celdas expiradas y la puntuación
     mystate.expired_cells = []
     mystate.myscore = 0
+    mystate.failures = 0 # (Modificacion no3)
 
     # Define las listas de emojis
     foxes = ['😺', '😸', '😹', '😻', '😼', '😽', '🙀', '😿', '😾']
@@ -490,8 +495,8 @@ def NewGame():
     # Añade una barra horizontal
     st.markdown(horizontal_bar, True)
 
-    # Comprueba si todas las celdas han sido presionadas
-    if len(mystate.expired_cells) == (total_cells_per_row_or_col ** 2):
+    # Comprueba si todas las celdas han sido presionadas o si el jugador ha perdido (Modificacion no3)
+    if len(mystate.expired_cells) == (total_cells_per_row_or_col ** 2) or mystate.failures > (total_cells_per_row_or_col ** 2) / 2 + 1: # 50% + 1
         # Si todas las celdas han sido presionadas, escribe los resultados en la tabla de líderes
         Leaderboard('write')
 
