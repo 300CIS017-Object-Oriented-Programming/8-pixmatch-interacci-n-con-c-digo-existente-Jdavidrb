@@ -1,12 +1,12 @@
 # Importamos las bibliotecas necesarias
-import streamlit as st  # Importamos streamlit con alias "st"
-import os  # Trabajar con comandos del sistema operativo(manejo de rutas)
-import time as tm # Trabajar con tiempos
-import random # Generar numeros aleatorios
+import streamlit as st  # Importamos streamlit con alias "st".
+import os  # Trabajar con comandos del sistema operativo(manejo de rutas).
+import time as tm # Trabajar con tiempos.
+import random # Generar numeros aleatorios.
 import base64 #  Codificar y decodificar datos en base64.
-import json # Trabajar con datos JSON
-from PIL import Image  # Manejo de imagenes
-from streamlit_autorefresh import st_autorefresh # Para refrescar la pagina automaticamente usando autorefresh
+import json # Trabajar con datos JSON.
+from PIL import Image  # Manejo de imagenes.
+from streamlit_autorefresh import st_autorefresh # Para refrescar la pagina automaticamente usando autorefresh.
 
 # Configuramos la página de Streamlit
 st.set_page_config(page_title="PixMatch", page_icon="🕹️", layout="wide", initial_sidebar_state="expanded")
@@ -133,7 +133,7 @@ def Leaderboard(what_to_do):
                 leaderboard = dict(sorted(leaderboard.items(), key=lambda item: item[1]['HighestScore'], reverse=True))
 
                 # Crea columnas para mostrar los ganadores pasados
-                sc0, sc1, sc2, sc3 = st.columns((2, 3, 3, 3))
+                sc0, sc1, sc2, sc3, sc4 = st.columns((2, 3, 3, 3))
                 rknt = 0
                 # Para cada clave en la tabla de líderes
                 for vkey in leaderboard.keys():
@@ -156,7 +156,7 @@ def Leaderboard(what_to_do):
                                 f"🥈 | {leaderboard[vkey]['NameCountry']}: :red[{leaderboard[vkey]['HighestScore']}]")
 
                         elif rknt == 4: # (modificacion no2)
-                            sc3.write(
+                            sc4.write(
                                 f"🥉 | {leaderboard[vkey]['NameCountry']}: :red[{leaderboard[vkey]['HighestScore']}]")
 
 
