@@ -173,6 +173,7 @@ def InitialPage():
         # Muestra la imagen del logo en la barra lateral
         st.image(sidebarlogo, use_column_width='auto')
 
+
     # Define las instrucciones del juego
     hlp_dtl = f"""<span style="font-size: 26px;">
     <ol>
@@ -496,7 +497,7 @@ def NewGame():
     st.markdown(horizontal_bar, True)
 
     # Comprueba si todas las celdas han sido presionadas o si el jugador ha perdido (Modificacion no3)
-    if len(mystate.expired_cells) == (total_cells_per_row_or_col ** 2) or mystate.failures > (total_cells_per_row_or_col ** 2) / 2 + 1: # 50% + 1
+    if len(mystate.expired_cells) == (total_cells_per_row_or_col ** 2) or mystate.failures > (total_cells_per_row_or_col ** 2) / 2:
         # Si todas las celdas han sido presionadas, escribe los resultados en la tabla de líderes
         Leaderboard('write')
 

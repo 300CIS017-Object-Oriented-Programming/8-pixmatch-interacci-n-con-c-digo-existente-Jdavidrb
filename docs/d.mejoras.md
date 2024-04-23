@@ -45,3 +45,59 @@ Detalla en este markdown lo siguiente:
 - **Métodos Importantes:** Enumera los métodos principales para cada clase. Incluye una descripción de cuál sería la utilidad de cada método
 - **Imagen del UML del diagrama de clases**  Adjunta una imagen del UML del diagrama de clases como una forma visual de planificar y entender la estructura de las clases, métodos, atributos y relaciones que podría tener una versión mejorada del código fuente.
 - **Organización de archivos:** Propon una estructura de organización de los archivos de este proyecto para que no queden todos en la raiz principal. Investiga cuáles podrían ser buenas formas de organizar los directorios y a partir de tu investigación indica qué directorios crearías y cómo los organizarías. 
+
+# Entregable - Mejoras para pasar a POO
+
+## Clases a Definir
+
+1. **Clase Juego**: Esta clase sería responsable de manejar la lógica del juego, incluyendo el inicio del juego, el seguimiento del estado del juego y la verificación de las condiciones de victoria o derrota. Esta clase es útil porque centraliza la lógica del juego en un solo lugar, lo que facilita la comprensión y el mantenimiento del código.
+
+2. **Clase Jugador**: Esta clase representaría a un jugador en el juego. Esta clase es útil porque permite manejar múltiples jugadores de manera eficiente y organizar la información relacionada con el jugador de manera coherente.
+
+3. **Clase Tablero**: Esta clase representaría el tablero del juego. Esta clase es útil porque encapsula todos los detalles relacionados con el tablero de juego, lo que hace que el código sea más modular y fácil de mantener.
+
+
+# 1. **Clase Juego**: 
+### Atributos
+   - `estado`
+   - `dificultad`
+   - `jugador`
+   - `tablero`
+### Metodos
+   - `confPaginaInicial()`: Configura todo respecto a la página principal del juego.
+   - `confBarraLateral()`: Configura todo respecto a la barra lateral del juego.
+   - `tablaLideres()`: Se encargaria de las funciones que hace leaderBoard() en el codigo actual.
+   - `preNuevoJuego()`: Remplazaria a la funcion preNewGame().
+   - `nuevoJuego()`: Remplazaria las funciones de newGame().
+
+# 2. **Clase Jugador**:
+### Atributos
+   - `nombre`
+   - `pais`
+   - `puntaje`
+### Metodos
+   - `geters/seters()`: Seran necesarios para que la clase juego pueda manejar a los jugadores.
+
+# 3. **Clase Tablero**:
+### Atributos
+   - `tamanio`
+   - `emojis_disponibles`
+### Metodos
+   - `chekeoSeleccion()`: Remplaza a la funcion pressedCheked() del codigo actual.
+   - `puntajeEmoji()`: Remplazaria la funcion scoreEmoji() del codigo actual.
+   - `resetearTablero()`: Remplaza a la funcion resetBoard() del codigo actual. 
+
+## Imagen del UML del diagrama de clases
+
+![mejoras.png](img/mejoras.png) 
+## Organización de archivos
+Propondría la siguiente estructura de directorios para organizar los archivos del proyecto:
+
+- `/src`: Este directorio contendría todo el código fuente del proyecto, incluyendo las definiciones de las clases.
+- `/tests`: Este directorio contendría todas las pruebas unitarias y de integración.
+- `/assets`: Este directorio contendría todos los archivos estáticos como imágenes, archivos de audio, etc.
+- `/docs`: Este directorio contendría toda la documentación del proyecto, incluyendo el diagrama UML.
+
+Esta estructura de directorios sigue las prácticas estándar de gestión de proyectos de software y facilita la navegación y el mantenimiento del proyecto.
+
+
