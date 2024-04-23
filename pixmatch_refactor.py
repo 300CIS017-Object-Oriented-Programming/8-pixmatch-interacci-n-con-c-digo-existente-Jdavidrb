@@ -133,7 +133,7 @@ def Leaderboard(what_to_do):
                 leaderboard = dict(sorted(leaderboard.items(), key=lambda item: item[1]['HighestScore'], reverse=True))
 
                 # Crea columnas para mostrar los ganadores pasados
-                sc0, sc1, sc2, sc3, sc4 = st.columns((2, 3, 3, 3))
+                sc0, sc1, sc2, sc3, sc4 = st.columns((2, 3, 3, 3, 3))
                 rknt = 0
                 # Para cada clave en la tabla de líderes
                 for vkey in leaderboard.keys():
